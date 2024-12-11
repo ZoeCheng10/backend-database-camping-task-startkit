@@ -56,7 +56,7 @@ SELECT * FROM "USER" LIMIT 3;
 
 INSERT INTO "CREDIT_PACKAGE" (name,credit_amount,price) VALUES
 ('7 堂組合包方案',7,1400),
-('14 堂組合包方案',14,2500),
+('14 堂組合包方案',14,2520),
 ('21 堂組合包方案',21,4800);
 
 -- 2-2. 新增：在 `CREDIT_PURCHASE` 資料表，新增三筆資料：（請使用 name 欄位做子查詢）
@@ -147,7 +147,7 @@ WHERE user_id =(SELECT id FROM "USER" WHERE email='muscle@hexschooltest.io');
     -- 2. 教練`Q太郎` 的經驗年數為5年
 
 UPDATE "COACH" SET experience_years =5
-WHERE user_id =(SELECT id FROM "USER" WHERE email='starplatinum@hexshooltecst.io');
+WHERE user_id =(SELECT id FROM "USER" WHERE email='starplatinum@hexschooltest.io');
 
 -- 3-4 刪除：新增一個專長 空中瑜伽 至 SKILL 資料表，之後刪除此專長。
 
@@ -345,4 +345,4 @@ SELECT COUNT(DISTINCT user_id) AS 預約會員人數
 FROM "COURSE_BOOKING"
 WHERE "COURSE_BOOKING".created_at >= '2024-11-01 00:00:00'
   AND "COURSE_BOOKING".created_at <= '2024-11-30 23:59:59'
-  AND status = '即將授課';
+  AND status !='課程已取消';
